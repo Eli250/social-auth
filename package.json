@@ -1,0 +1,59 @@
+{
+  "name": "sequelizeproject",
+  "version": "1.0.0",
+  "description": "'Social network Auth Project'",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d dist",
+    "start": "npm run build && better-npm-run prod",
+    "dev": "better-npm-run dev",
+    "test": "better-npm-run test"
+  },
+  "betterScripts": {
+    "dev": {
+      "command": "nodemon --exec babel-node ./src/app.js",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": 3000
+      }
+    },
+    "test": {
+      "command": "nyc --reporter=html --reporter=text mocha --requre @babel/register ./tests/* --timeout 1000000 --exit || true",
+      "env": {
+        "NODE_ENV": "test",
+        "PORT": 5000
+      }
+    },
+    "prod": {
+      "command": "node ./dist/app.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  },
+  "author": "'Eli Hirwa'",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/node": "^7.16.8",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/register": "^7.17.0",
+    "better-npm-run": "^0.1.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "passport": "^0.5.2",
+    "passport-google-oauth2": "^0.2.0",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.16.2",
+    "sequelize-cli": "^6.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "nyc": "^15.1.0"
+  }
+}
